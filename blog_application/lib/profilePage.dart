@@ -1,6 +1,8 @@
+import 'package:blog_application/login.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:blog_application/blogDashboard.dart';
+
 
 class ProfilePageWidget extends StatefulWidget {
   @override
@@ -302,6 +304,29 @@ class MapScreenState extends State<ProfilePageWidget>
                                 ],
                               )),
                           !_status ? _getActionButtons() : new Container(),
+                          Align(
+                            alignment: AlignmentDirectional(0, 0.05),
+                            child: Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(0, 24, 0, 0),
+                              child: RaisedButton(
+                                  child: Text("Logout"),
+                                  textColor: Colors.white,
+                                  color: Colors.purple,
+
+                                  onPressed: () async {
+                                    await Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => LoginPageWidget(),
+                                      ),
+                                    );
+                                  },
+                                shape: new RoundedRectangleBorder(
+                                    borderRadius: new BorderRadius.circular(50.0)),
+
+                              ),
+                            ),
+                          ),
                         ],
                       ),
                     ),

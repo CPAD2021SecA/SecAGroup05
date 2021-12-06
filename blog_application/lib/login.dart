@@ -218,8 +218,10 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                         setState(() => _loadingButton1 = false);
                                       }
                                     },
-                                    child: ElevatedButton(
+                                    child: RaisedButton(
                                       child: Text('Sign in with email'),
+                                      textColor: Colors.white,
+                                      color: Colors.purple,
                                       onPressed: () async {
                                         setState(() => _loadingButton1 = true);
                                         try {

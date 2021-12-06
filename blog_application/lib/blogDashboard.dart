@@ -144,7 +144,7 @@ class _BlogDashboardWidgetState extends State<BlogDashboardWidget> {
                                           topRight: Radius.circular(8),
                                         ),
                                         child: Image.asset(
-                                          '../assets/images/loginBackground.png',
+                                          '../assets/images/postBackground.jpg',
                                           // 'https://picsum.photos/seed/400/600',
                                           width:
                                           MediaQuery.of(context).size.width,

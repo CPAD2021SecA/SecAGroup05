@@ -1,320 +1,393 @@
-// import '../auth/auth_util.dart';
-// import '../backend/backend.dart';
-// import '../flutter_flow/flutter_flow_theme.dart';
-// import '../flutter_flow/flutter_flow_util.dart';
-// import '../flutter_flow/flutter_flow_widgets.dart';
-// import '../login_page/login_page_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:blog_application/login.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:blog_application/blogDashboard.dart';
 
 class ProfilePageWidget extends StatefulWidget {
-  // const ProfilePageWidget({required Key key}) : super(key: key);
-
   @override
-  _ProfilePageWidgetState createState() => _ProfilePageWidgetState();
+  MapScreenState createState() => MapScreenState();
 }
 
-class _ProfilePageWidgetState extends State<ProfilePageWidget> {
-  late TextEditingController emailAddressController;
-  late TextEditingController textController1;
-  late TextEditingController myBioController;
-  bool _loadingButton = false;
-  final scaffoldKey = GlobalKey<ScaffoldState>();
-
-  get currentUserReference => null;
+class MapScreenState extends State<ProfilePageWidget>
+    with SingleTickerProviderStateMixin {
+  bool _status = true;
+  final FocusNode myFocusNode = FocusNode();
 
   @override
   void initState() {
+    // TODO: implement initState
     super.initState();
-    emailAddressController = TextEditingController(text: "user@gmail.com");
-    textController1 = TextEditingController(text: '[display_name]');
-    myBioController = TextEditingController(text: '[bio]');
   }
 
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder<UsersRecord>(
-      stream: UsersRecord.getDocument(currentUserReference),
-      builder: (context, snapshot) {
-        // Customize what your widget looks like when it's loading.
-        if (!snapshot.hasData) {
-          return Center(
-            child: SizedBox(
-              width: 50,
-              height: 50,
-              child: CircularProgressIndicator(
-                // color: FlutterFlowTheme.primaryColor,
-              ),
-            ),
-          );
-        }
-        final profilePageUsersRecord = snapshot.data;
-        return Scaffold(
-          key: scaffoldKey,
-          appBar: AppBar(
-            backgroundColor: Colors.white,
-            automaticallyImplyLeading: false,
-            leading: InkWell(
-              onTap: () async {
-                Navigator.pop(context);
-              },
-              child: Icon(
-                Icons.arrow_back_rounded,
-                color: Colors.black,
-                size: 24,
-              ),
-            ),
-            title: Text(
-              'My Profile',
-              // style: FlutterFlowTheme.bodyText1.override(
-              //   fontFamily: 'Lexend Deca',
-              //   color: Color(0xFF14181B),
-              //   fontSize: 14,
-              //   fontWeight: FontWeight.w500,
-              // ),
-            ),
-            actions: [],
-            centerTitle: true,
-            elevation: 0,
-          ),
-          backgroundColor: Colors.white,
-          body: SafeArea(
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                Row(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Container(
-                      width: 100,
-                      height: 100,
-                      decoration: BoxDecoration(
-                        color: Color(0xFFDBE2E7),
-                        shape: BoxShape.circle,
-                      ),
-                      child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(2, 2, 2, 2),
-                        child: Container(
-                          width: 90,
-                          height: 90,
-                          clipBehavior: Clip.antiAlias,
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                          ),
-                          child: Image.asset(
-                            '../assets/images/user.png',
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                      ),
-                    )
-                  ],
-                ),
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 12, 0, 16),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [],
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(20, 0, 20, 16),
-                  child: TextFormField(
-                    controller: textController1,
-                    obscureText: false,
-                    decoration: InputDecoration(
-                      labelText: 'Full Name',
-                      // labelStyle: FlutterFlowTheme.bodyText1.override(
-                      //   fontFamily: 'Lexend Deca',
-                      //   color: Color(0xFF95A1AC),
-                      //   fontSize: 14,
-                      //   fontWeight: FontWeight.normal,
-                      // ),
-                      hintText: 'Your full name...',
-                      // hintStyle: FlutterFlowTheme.bodyText1.override(
-                      //   fontFamily: 'Lexend Deca',
-                      //   color: Color(0xFF95A1AC),
-                      //   fontSize: 14,
-                      //   fontWeight: FontWeight.normal,
-                      // ),
-                      enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Color(0xFFDBE2E7),
-                          width: 2,
-                        ),
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Color(0xFFDBE2E7),
-                          width: 2,
-                        ),
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      filled: true,
-                      fillColor: Colors.white,
-                      contentPadding:
-                      EdgeInsetsDirectional.fromSTEB(20, 24, 0, 24),
-                    ),
-                    // style: FlutterFlowTheme.bodyText1.override(
-                    //   fontFamily: 'Lexend Deca',
-                    //   color: Color(0xFF14181B),
-                    //   fontSize: 14,
-                    //   fontWeight: FontWeight.normal,
-                    // ),
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(20, 0, 20, 12),
-                  child: Container(
-                    child: TextFormField(
-                      controller: emailAddressController,
-                      obscureText: false,
-                      decoration: InputDecoration(
-                        labelText: 'Email Address',
-                        // labelStyle: FlutterFlowTheme.bodyText1.override(
-                        //   fontFamily: 'Lexend Deca',
-                        //   color: Color(0xFF95A1AC),
-                        //   fontSize: 14,
-                        //   fontWeight: FontWeight.normal,
-                        // ),
-                        hintText: 'Your email..',
-                        // hintStyle: FlutterFlowTheme.bodyText1.override(
-                        //   fontFamily: 'Lexend Deca',
-                        //   color: Color(0xFF95A1AC),
-                        //   fontSize: 14,
-                        //   fontWeight: FontWeight.normal,
-                        // ),
-                        enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                            color: Color(0xFFDBE2E7),
-                            width: 2,
-                          ),
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                            color: Color(0xFFDBE2E7),
-                            width: 2,
-                          ),
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                        filled: true,
-                        fillColor: Colors.white,
-                        contentPadding:
-                        EdgeInsetsDirectional.fromSTEB(20, 24, 0, 24),
-                      ),
-                      // style: FlutterFlowTheme.bodyText1.override(
-                      //   fontFamily: 'Lexend Deca',
-                      //   color: Color(0xFF14181B),
-                      //   fontSize: 14,
-                      //   fontWeight: FontWeight.normal,
-                      // ),
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(20, 0, 20, 12),
-                  child: TextFormField(
-                    controller: myBioController,
-                    obscureText: false,
-                    decoration: InputDecoration(
-                      labelText: 'Bio',
-                      // labelStyle: FlutterFlowTheme.bodyText1.override(
-                      //   fontFamily: 'Lexend Deca',
-                      //   color: Color(0xFF95A1AC),
-                      //   fontSize: 14,
-                      //   fontWeight: FontWeight.normal,
-                      // ),
-                      hintText: 'A little about you...',
-                      // hintStyle: FlutterFlowTheme.bodyText1.override(
-                      //   fontFamily: 'Lexend Deca',
-                      //   color: Color(0xFF95A1AC),
-                      //   fontSize: 14,
-                      //   fontWeight: FontWeight.normal,
-                      // ),
-                      enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Color(0xFFDBE2E7),
-                          width: 2,
-                        ),
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Color(0xFFDBE2E7),
-                          width: 2,
-                        ),
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      filled: true,
-                      fillColor: Colors.white,
-                      contentPadding:
-                      EdgeInsetsDirectional.fromSTEB(20, 24, 0, 24),
-                    ),
-                    // style: FlutterFlowTheme.bodyText1.override(
-                    //   fontFamily: 'Lexend Deca',
-                    //   color: Color(0xFF14181B),
-                    //   fontSize: 14,
-                    //   fontWeight: FontWeight.normal,
-                    // ),
-                    textAlign: TextAlign.start,
-                    maxLines: 3,
-                  ),
-                ),
-                Align(
-                  alignment: AlignmentDirectional(0, 0.05),
-                  child: Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0, 24, 0, 0),
-                    child: ElevatedButton(
-                      child: Text('Logout'),
-                      onPressed: () async {
-                        setState(() => _loadingButton = true);
-                        try {
-                          await Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => LoginPageWidget(),
+    return new Scaffold(
+        body: new Container(
+          color: Colors.white,
+          child: new ListView(
+            children: <Widget>[
+              Column(
+                children: <Widget>[
+                  new Container(
+                    height: 250.0,
+                    color: Colors.white,
+                    child: new Column(
+                      children: <Widget>[
+                        Padding(
+                            padding: EdgeInsets.only(left: 20.0, top: 20.0),
+                            child: new Row(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                InkWell(
+                                  onTap: () async {
+                                    Navigator.pop(context);
+                                  },
+                                  child: Icon(
+                                    Icons.arrow_back_rounded,
+                                    color: Colors.black,
+                                    size: 24,
+                                  ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsets.only(left: 25.0),
+                                  child: new Text('PROFILE',
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 20.0,
+                                          fontFamily: 'sans-serif-light',
+                                          color: Colors.black)),
+                                )
+                              ],
+                            )),
+                        Padding(
+                          padding: EdgeInsets.only(top: 20.0),
+                          child: new Stack(fit: StackFit.loose, children: <Widget>[
+                            new Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>[
+                                new Container(
+                                    width: 140.0,
+                                    height: 140.0,
+                                    decoration: new BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      image: new DecorationImage(
+                                        image: new ExactAssetImage(
+                                            '../assets/images/user.png'),
+                                        fit: BoxFit.cover,
+                                      ),
+                                    )),
+                              ],
                             ),
-                          );
-                        } finally {
-                          setState(() => _loadingButton = false);
-                        }
-                      },
-                      // text: 'Logout',
-                      // options: FFButtonOptions(
-                      //   width: 340,
-                      //   height: 60,
-                      //   color: Color(0xFFCD5E77),
-                      //   textStyle: FlutterFlowTheme.subtitle2.override(
-                      //     fontFamily: 'Lexend Deca',
-                      //     color: Colors.white,
-                      //     fontSize: 16,
-                      //     fontWeight: FontWeight.normal,
-                      //   ),
-                      //   elevation: 2,
-                      //   borderSide: BorderSide(
-                      //     color: Colors.transparent,
-                      //     width: 1,
-                      //   ),
-                      //   borderRadius: 8,
-                      // ),
-                      // loading: _loadingButton,
+                            Padding(
+                                padding: EdgeInsets.only(top: 90.0, right: 100.0),
+                                child: new Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: <Widget>[
+                                    new CircleAvatar(
+                                      backgroundColor: Color(0xFFCD5E77),
+                                      radius: 25.0,
+                                      child: new Icon(
+                                        Icons.camera_alt,
+                                        color: Colors.white,
+                                      ),
+                                    )
+                                  ],
+                                )),
+                          ]),
+                        )
+                      ],
                     ),
                   ),
-                )
-              ],
-            ),
+                  new Container(
+                    color: Color(0xffFFFFFF),
+                    child: Padding(
+                      padding: EdgeInsets.only(bottom: 25.0),
+                      child: new Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: <Widget>[
+                          Padding(
+                              padding: EdgeInsets.only(
+                                  left: 25.0, right: 25.0, top: 25.0),
+                              child: new Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                mainAxisSize: MainAxisSize.max,
+                                children: <Widget>[
+                                  new Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: <Widget>[
+                                      new Text(
+                                        'Parsonal Information',
+                                        style: TextStyle(
+                                            fontSize: 18.0,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                    ],
+                                  ),
+                                  new Column(
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: <Widget>[
+                                      _status ? _getEditIcon() : new Container(),
+                                    ],
+                                  )
+                                ],
+                              )),
+                          Padding(
+                              padding: EdgeInsets.only(
+                                  left: 25.0, right: 25.0, top: 25.0),
+                              child: new Row(
+                                mainAxisSize: MainAxisSize.max,
+                                children: <Widget>[
+                                  new Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: <Widget>[
+                                      new Text(
+                                        'Name',
+                                        style: TextStyle(
+                                            fontSize: 16.0,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              )),
+                          Padding(
+                              padding: EdgeInsets.only(
+                                  left: 25.0, right: 25.0, top: 2.0),
+                              child: new Row(
+                                mainAxisSize: MainAxisSize.max,
+                                children: <Widget>[
+                                  new Flexible(
+                                    child: new TextField(
+                                      decoration: const InputDecoration(
+                                        hintText: "Enter Your Name",
+                                      ),
+                                      enabled: !_status,
+                                      autofocus: !_status,
+
+                                    ),
+                                  ),
+                                ],
+                              )),
+                          Padding(
+                              padding: EdgeInsets.only(
+                                  left: 25.0, right: 25.0, top: 25.0),
+                              child: new Row(
+                                mainAxisSize: MainAxisSize.max,
+                                children: <Widget>[
+                                  new Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: <Widget>[
+                                      new Text(
+                                        'Email ID',
+                                        style: TextStyle(
+                                            fontSize: 16.0,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              )),
+                          Padding(
+                              padding: EdgeInsets.only(
+                                  left: 25.0, right: 25.0, top: 2.0),
+                              child: new Row(
+                                mainAxisSize: MainAxisSize.max,
+                                children: <Widget>[
+                                  new Flexible(
+                                    child: new TextField(
+                                      decoration: const InputDecoration(
+                                          hintText: "Enter Email ID"),
+                                      enabled: !_status,
+                                    ),
+                                  ),
+                                ],
+                              )),
+                          Padding(
+                              padding: EdgeInsets.only(
+                                  left: 25.0, right: 25.0, top: 25.0),
+                              child: new Row(
+                                mainAxisSize: MainAxisSize.max,
+                                children: <Widget>[
+                                  new Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: <Widget>[
+                                      new Text(
+                                        'Mobile',
+                                        style: TextStyle(
+                                            fontSize: 16.0,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              )),
+                          Padding(
+                              padding: EdgeInsets.only(
+                                  left: 25.0, right: 25.0, top: 2.0),
+                              child: new Row(
+                                mainAxisSize: MainAxisSize.max,
+                                children: <Widget>[
+                                  new Flexible(
+                                    child: new TextField(
+                                      decoration: const InputDecoration(
+                                          hintText: "Enter Mobile Number"),
+                                      enabled: !_status,
+                                    ),
+                                  ),
+                                ],
+                              )),
+                          Padding(
+                              padding: EdgeInsets.only(
+                                  left: 25.0, right: 25.0, top: 25.0),
+                              child: new Row(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: <Widget>[
+                                  Expanded(
+                                    child: Container(
+                                      child: new Text(
+                                        'Pin Code',
+                                        style: TextStyle(
+                                            fontSize: 16.0,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                    ),
+                                    flex: 2,
+                                  ),
+                                  Expanded(
+                                    child: Container(
+                                      child: new Text(
+                                        'State',
+                                        style: TextStyle(
+                                            fontSize: 16.0,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                    ),
+                                    flex: 2,
+                                  ),
+                                ],
+                              )),
+                          Padding(
+                              padding: EdgeInsets.only(
+                                  left: 25.0, right: 25.0, top: 2.0),
+                              child: new Row(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: <Widget>[
+                                  Flexible(
+                                    child: Padding(
+                                      padding: EdgeInsets.only(right: 10.0),
+                                      child: new TextField(
+                                        decoration: const InputDecoration(
+                                            hintText: "Enter Pin Code"),
+                                        enabled: !_status,
+                                      ),
+                                    ),
+                                    flex: 2,
+                                  ),
+                                  Flexible(
+                                    child: new TextField(
+                                      decoration: const InputDecoration(
+                                          hintText: "Enter State"),
+                                      enabled: !_status,
+                                    ),
+                                    flex: 2,
+                                  ),
+                                ],
+                              )),
+                          !_status ? _getActionButtons() : new Container(),
+                        ],
+                      ),
+                    ),
+                  )
+                ],
+              ),
+            ],
           ),
-        );
+        ));
+  }
+
+  @override
+  void dispose() {
+    // Clean up the controller when the Widget is disposed
+    myFocusNode.dispose();
+    super.dispose();
+  }
+
+  Widget _getActionButtons() {
+    return Padding(
+      padding: EdgeInsets.only(left: 25.0, right: 25.0, top: 45.0),
+      child: new Row(
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: <Widget>[
+          Expanded(
+            child: Padding(
+              padding: EdgeInsets.only(right: 10.0),
+              child: Container(
+                  child: new RaisedButton(
+                    child: new Text("Save"),
+                    textColor: Colors.white,
+                    color: Color(0xFFCD5E77),
+                    onPressed: () {
+                      setState(() {
+                        _status = true;
+                        FocusScope.of(context).requestFocus(new FocusNode());
+                      });
+                    },
+                    shape: new RoundedRectangleBorder(
+                        borderRadius: new BorderRadius.circular(20.0)),
+                  )),
+            ),
+            flex: 2,
+          ),
+          Expanded(
+            child: Padding(
+              padding: EdgeInsets.only(left: 10.0),
+              child: Container(
+                  child: new RaisedButton(
+                    child: new Text("Cancel"),
+                    textColor: Colors.white,
+                    color: Colors.purple,
+                    onPressed: () {
+                      setState(() {
+                        _status = true;
+                        FocusScope.of(context).requestFocus(new FocusNode());
+                      });
+                    },
+                    shape: new RoundedRectangleBorder(
+                        borderRadius: new BorderRadius.circular(20.0)),
+                  )),
+            ),
+            flex: 2,
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _getEditIcon() {
+    return new GestureDetector(
+      child: new CircleAvatar(
+        backgroundColor: Colors.purple,
+        radius: 14.0,
+        child: new Icon(
+          Icons.edit,
+          color: Colors.white,
+          size: 16.0,
+        ),
+      ),
+      onTap: () {
+        setState(() {
+          _status = false;
+        });
       },
     );
   }
-}
-
-class UsersRecord {
-  static getDocument(currentUserReference) {}
 }

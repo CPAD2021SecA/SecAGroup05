@@ -13,9 +13,9 @@ class BlogDashboardWidget extends StatefulWidget {
 
 class _BlogDashboardWidgetState extends State<BlogDashboardWidget> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
-
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       key: scaffoldKey,
       backgroundColor: Colors.white,
@@ -502,75 +502,80 @@ class _BlogDashboardWidgetState extends State<BlogDashboardWidget> {
               ),
             ),
           ),
-          Container(
-            decoration: BoxDecoration(
-              color: Color(0xFFEEEEEE),
-            ),
-            child: Align(
-              alignment: AlignmentDirectional(0, 1),
-              child: Row(
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(30, 0, 100, 0),
-                    child: InkWell(
-                      onTap: () async {
-                        await Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => BlogDashboardWidget(),
-                          ),
-                        );
-                      },
-                      child: Icon(
-                        Icons.home_rounded,
-                        color: Color(0xFFCD5E77),
-                        size: 25,
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(20, 0, 100, 0),
-                    child: InkWell(
-                    onTap: () async {
-                      await Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => CreatePostWidget(),
-                    ),
-                    );
-                    },
-                    child: Icon(
-                      Icons.add_rounded,
-                      color: Color(0xFFCD5E77),
-                      size: 25,
-                    ),
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(10, 10, 0, 10),
-                    child: InkWell(
-                      onTap: () async {
-                        await Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => ProfilePageWidget(),
-                          ),
-                        );
-                      },
-                      child: Icon(
-                        Icons.person_sharp,
-                        color: Color(0xFFCD5E77),
-                        size: 25,
-                      ),
-                    ),
-                  )
-                ],
-              ),
-            ),
-          )
+          // Container(
+          //   decoration: BoxDecoration(
+          //     color: Color(0xFFEEEEEE),
+          //   ),
+          //   child: Align(
+          //     alignment: AlignmentDirectional(0, 1),
+          //     child: Row(
+          //       mainAxisSize: MainAxisSize.max,
+          //       children: [
+          //         Padding(
+          //           padding: EdgeInsetsDirectional.fromSTEB(30, 0, 100, 0),
+          //           child: InkWell(
+          //             onTap: () async {
+          //               await Navigator.push(
+          //                 context,
+          //                 MaterialPageRoute(
+          //                   builder: (context) => BlogDashboardWidget(),
+          //                 ),
+          //               );
+          //             },
+          //             child: Icon(
+          //               Icons.home_rounded,
+          //               color: Color(0xFFCD5E77),
+          //               size: 25,
+          //             ),
+          //           ),
+          //         ),
+          //         Padding(
+          //           padding: EdgeInsetsDirectional.fromSTEB(20, 0, 100, 0),
+          //           child: InkWell(
+          //           onTap: () async {
+          //             await Navigator.push(
+          //               context,
+          //               MaterialPageRoute(
+          //                   builder: (context) => CreatePostWidget(),
+          //           ),
+          //           );
+          //           },
+          //           child: Icon(
+          //             Icons.add_rounded,
+          //             color: Color(0xFFCD5E77),
+          //             size: 25,
+          //           ),
+          //           ),
+          //         ),
+          //         Padding(
+          //           padding: EdgeInsetsDirectional.fromSTEB(10, 10, 0, 10),
+          //           child: InkWell(
+          //             onTap: () async {
+          //               await Navigator.push(
+          //                 context,
+          //                 MaterialPageRoute(
+          //                   builder: (context) => ProfilePageWidget(),
+          //                 ),
+          //               );
+          //             },
+          //             child: Icon(
+          //               Icons.person_sharp,
+          //               color: Color(0xFFCD5E77),
+          //               size: 25,
+          //             ),
+          //           ),
+          //         )
+          //       ],
+          //     ),
+          //   ),
+          // )
         ],
       ),
     );
   }
 }
+
+
+
+
+

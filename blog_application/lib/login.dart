@@ -1,3 +1,4 @@
+import 'package:blog_application/home.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:blog_application/blogDashboard.dart';
@@ -211,7 +212,8 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                           context,
                                           MaterialPageRoute(
                                             builder: (context) =>
-                                                BlogDashboardWidget(),
+                                                // BlogDashboardWidget(),
+                                                HomePage(),
                                           ),
                                         );
                                       } finally {

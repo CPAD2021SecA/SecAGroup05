@@ -1,4 +1,5 @@
 
+import 'package:blog_application/home.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:blog_application/blogDashboard.dart';
@@ -12,7 +13,7 @@ class CreatePostWidget extends StatefulWidget {
 }
 
 class _CreatePostWidgetState extends State<CreatePostWidget> {
-  late String dropDownValue;
+  String dropDownValue = "Health";
   String uploadedFileUrl = '';
   late TextEditingController textController1;
   late TextEditingController textController2;
@@ -28,6 +29,7 @@ class _CreatePostWidgetState extends State<CreatePostWidget> {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       key: scaffoldKey,
       appBar: AppBar(
@@ -64,7 +66,9 @@ class _CreatePostWidgetState extends State<CreatePostWidget> {
         elevation: 0,
       ),
       backgroundColor: Colors.white,
-      body: Column(
+      body: SingleChildScrollView(
+    scrollDirection: Axis.vertical,
+    child: Column(
         mainAxisSize: MainAxisSize.max,
         children: [
           Row(
@@ -113,9 +117,9 @@ class _CreatePostWidgetState extends State<CreatePostWidget> {
                             decoration: BoxDecoration(
                               color: Color(0xFFF1F5F8),
                               image: DecorationImage(
-                                fit: BoxFit.cover,
+                                fit: BoxFit.contain,
                                 image: Image.asset(
-                                  'assets/images/emptyState@2x.png',
+                                  '../assets/images/addImage.jpg',
                                 ).image,
                               ),
                               boxShadow: [
@@ -189,13 +193,6 @@ class _CreatePostWidgetState extends State<CreatePostWidget> {
                                 obscureText: false,
                                 decoration: InputDecoration(
                                   hintText: 'Description...',
-                                  // hintStyle:
-                                  // FlutterFlowTheme.bodyText2.override(
-                                  //   fontFamily: 'Lexend Deca',
-                                  //   color: Color(0xFF8B97A2),
-                                  //   fontSize: 14,
-                                  //   fontWeight: FontWeight.normal,
-                                  // ),
                                   enabledBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
                                       color: Color(0xFFDBE2E7),
@@ -214,12 +211,6 @@ class _CreatePostWidgetState extends State<CreatePostWidget> {
                                   EdgeInsetsDirectional.fromSTEB(
                                       20, 32, 20, 12),
                                 ),
-                                // style: FlutterFlowTheme.bodyText1.override(
-                                //   fontFamily: 'Lexend Deca',
-                                //   color: Color(0xFF090F13),
-                                //   fontSize: 14,
-                                //   fontWeight: FontWeight.normal,
-                                // ),
                                 textAlign: TextAlign.start,
                                 maxLines: 4,
                               ),
@@ -229,31 +220,51 @@ class _CreatePostWidgetState extends State<CreatePostWidget> {
                       ),
                       Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(0, 12, 0, 0),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Padding(
                               padding:
                               EdgeInsetsDirectional.fromSTEB(0, 0, 5, 0),
-                              // child: DropDown(
-                              //   options: ['Category1', 'Category2'].toList(),
-                              //   onChanged: (val) =>
-                              //       setState(() => dropDownValue = val),
-                              //   width: MediaQuery.of(context).size.width * 0.94,
-                              //   textStyle: FlutterFlowTheme.bodyText1.override(
-                              //     fontFamily: 'Playfair Display',
-                              //     color: Colors.black,
-                              //   ),
-                              //   fillColor: Colors.white,
-                              //   elevation: 2,
-                              //   borderColor: FlutterFlowTheme.tertiaryColor,
-                              //   borderWidth: 0,
-                              //   borderRadius: 0,
-                              //   margin: EdgeInsetsDirectional.fromSTEB(
-                              //       12, 4, 12, 0),
-                              //   hidesUnderline: true,
-                              // ),
-                            )
+                              child: DropdownButtonFormField(
+                                decoration: InputDecoration(
+                                  hintText: 'Category',
+
+                                  enabledBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: Color(0xFFDBE2E7),
+                                      width: 2,
+                                    ),
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
+                                  focusedBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: Color(0xFFDBE2E7),
+                                      width: 2,
+                                    ),
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
+                                  contentPadding:
+                                  EdgeInsetsDirectional.fromSTEB(
+                                      20, 32, 20, 12),
+                                ),
+
+
+                                value: dropDownValue,
+                                onChanged: (val) =>
+                                      setState(() => dropDownValue = val as String),
+                                items: <String>['Health', 'Lifestyle', 'Sports', 'Fashion']
+                                    .map<DropdownMenuItem<String>>((String value) {
+                                  return DropdownMenuItem<String>(
+                                    value: value,
+                                    child: Text(value),
+                                  );
+                                }).toList(),
+
+
+                              ),
+                              ),
+
                           ],
                         ),
                       )
@@ -266,6 +277,10 @@ class _CreatePostWidgetState extends State<CreatePostWidget> {
           Padding(
             padding: EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
             child: ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                primary: Colors.purple, // background
+                onPrimary: Colors.white, // foreground
+              ),
             child: Text('Create Post'),
               onPressed: () async {
                 setState(() => _loadingButton = true);
@@ -273,7 +288,7 @@ class _CreatePostWidgetState extends State<CreatePostWidget> {
                   await Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => BlogDashboardWidget(),
+                      builder: (context) => HomePage(),
                     ),
                   );
                 } finally {
@@ -303,6 +318,7 @@ class _CreatePostWidgetState extends State<CreatePostWidget> {
           )
         ],
       ),
+    ),
     );
   }
 
@@ -314,3 +330,4 @@ class _CreatePostWidgetState extends State<CreatePostWidget> {
 
   uploadData(storagePath, bytes) {}
 }
+

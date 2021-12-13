@@ -203,6 +203,10 @@ class _CreateAccountPageWidgetState extends State<CreateAccountPageWidget> {
                                       0, 0, 0, 20),
                                   child: ElevatedButton(
                                     child: Text('Create Account'),
+                                    style: ElevatedButton.styleFrom(
+                                      primary: Colors.purple, // background
+                                      onPrimary: Colors.white,
+                                    ),
                                     onPressed: () async {
                                       final user = await signInWithEmail(
                                         context,
@@ -252,6 +256,7 @@ class _CreateAccountPageWidgetState extends State<CreateAccountPageWidget> {
                                   },
                                   child: Text(
                                     'Already have an account?',
+
                                     // style: FlutterFlowTheme.bodyText1.override(
                                     //   fontFamily: 'Playfair Display',
                                     //   color: Color(0xFF1F1F1F),

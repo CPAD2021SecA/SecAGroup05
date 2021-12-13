@@ -11,6 +11,11 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int selectedPage = 0;
 
+  _onTap() { // this has changed
+    Navigator.of(context)
+        .push(MaterialPageRoute(builder: (BuildContext context) => _pageOptions[selectedPage])); // this has changed
+  }
+
   final _pageOptions = [
     BlogDashboardWidget(),
     CreatePostWidget(),
@@ -65,7 +70,7 @@ class _HomePageState extends State<HomePage> {
 
     return Scaffold(
         backgroundColor: Colors.white,
-        body: _pageOptions[selectedPage],
+        body: _pageOptions.elementAt(selectedPage),
         bottomNavigationBar: BottomNavigationBar(
           items: [
             BottomNavigationBarItem(icon: Icon(Icons.home, size: 30), title: Text('Home')),
@@ -78,10 +83,11 @@ class _HomePageState extends State<HomePage> {
           selectedItemColor: _shrineColorScheme.onSurface,
           unselectedItemColor: _shrineColorScheme.onSurface.withOpacity(.60),
           currentIndex: selectedPage,
-          onTap: (index){
+          onTap: (index) {
             setState(() {
               selectedPage = index;
             });
+            _onTap();
           },
         )
     );

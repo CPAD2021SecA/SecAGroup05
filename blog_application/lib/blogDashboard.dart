@@ -88,12 +88,12 @@ class _BlogDashboardWidgetState extends State<BlogDashboardWidget> {
                 children: [
                   TabBar(
                     isScrollable: true,
-                    labelColor: Color(0xFFCD5E77),
+                    labelColor: Color(0xFF8E24AA),
                     unselectedLabelColor: Color(0xFF95A1AC),
                     labelStyle: GoogleFonts.getFont(
                       'Roboto',
                     ),
-                    indicatorColor: Color(0xFFCD5E77),
+                    indicatorColor: Color(0xFF8E24AA),
                     indicatorWeight: 3,
                     tabs: [
                       Tab(
@@ -502,6 +502,7 @@ class _BlogDashboardWidgetState extends State<BlogDashboardWidget> {
               ),
             ),
           ),
+
           // Container(
           //   decoration: BoxDecoration(
           //     color: Color(0xFFEEEEEE),
@@ -570,6 +571,51 @@ class _BlogDashboardWidgetState extends State<BlogDashboardWidget> {
           //   ),
           // )
         ],
+      ),
+      bottomNavigationBar: BottomAppBar(
+        child: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(colors: [Color(0xFFBA68C8), Color(0xFF8E24AA)]),
+          ),
+          child: Padding(
+            padding: EdgeInsets.only(left: 20, right: 20, top: 5, bottom: 5),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                IconButton(
+                    tooltip: 'Home',
+                    icon: Icon(Icons.home),
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => BlogDashboardWidget(),
+                          ));
+                    }),
+                IconButton(
+                    tooltip: 'Add post',
+                    icon: Icon(Icons.add_circle),
+                    onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => CreatePostWidget(),
+                                ));
+                    }),
+                IconButton(
+                    tooltip: 'Profile',
+                    icon: Icon(Icons.person),
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => ProfilePageWidget(),
+                          ));
+                    }),
+              ],
+            ),
+          ),
+        ),
       ),
     );
   }

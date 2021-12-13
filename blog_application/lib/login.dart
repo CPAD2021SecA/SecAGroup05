@@ -212,8 +212,8 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                           context,
                                           MaterialPageRoute(
                                             builder: (context) =>
-                                                // BlogDashboardWidget(),
-                                                HomePage(),
+                                                BlogDashboardWidget(),
+                                                // HomePage(),
                                           ),
                                         );
                                       } finally {
@@ -273,7 +273,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                       );
                                     },
                                     child: Text(
-                                      'Create Account',
+                                      'Not an User Yet? Create Account',
                                       // style: FlutterFlowTheme.bodyText1.override(
                                       //   fontFamily: 'Playfair Display',
                                       //   color: Color(0xFF1F1F1F),
@@ -290,14 +290,18 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                 padding:
                                 EdgeInsetsDirectional.fromSTEB(0, 0, 0, 15),
                                 child: Container(
-                                  width: 200,
-                                  height: 44,
+                                  width: 250,
+                                  height: 50,
                                   child: Stack(
                                     children: [
                                       Align(
                                         alignment: AlignmentDirectional(0, 0),
                                         child: ElevatedButton(
-                                          child: Text('Sign in with Google'),
+                                          child: Text('Login with Google'),
+                                          style: ElevatedButton.styleFrom(
+                                            primary: Colors.purple, // background
+                                            onPrimary: Colors.white,
+                                          ), // background
                                           onPressed: () async {
                                             setState(
                                                     () => _loadingButton2 = true);
@@ -355,14 +359,18 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                             Align(
                               alignment: AlignmentDirectional(0, 0),
                               child: Container(
-                                width: 200,
-                                height: 44,
+                                width: 250,
+                                height: 50,
                                 child: Stack(
                                   children: [
                                     Align(
                                       alignment: AlignmentDirectional(0, 0),
                                       child: ElevatedButton(
                                         child: Text('Login with Facebook'),
+                                        style: ElevatedButton.styleFrom(
+                                          primary: Colors.purple, // background
+                                          onPrimary: Colors.white, //foreground
+                                        ),
                                         onPressed: () async {
                                           setState(
                                                   () => _loadingButton3 = true);

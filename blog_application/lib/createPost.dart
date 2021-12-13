@@ -288,7 +288,7 @@ class _CreatePostWidgetState extends State<CreatePostWidget> {
                   await Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => HomePage(),
+                      builder: (context) => BlogDashboardWidget(),
                     ),
                   );
                 } finally {

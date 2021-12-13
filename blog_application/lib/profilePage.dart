@@ -86,7 +86,7 @@ class MapScreenState extends State<ProfilePageWidget>
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: <Widget>[
                                     new CircleAvatar(
-                                      backgroundColor: Color(0xFFCD5E77),
+                                      backgroundColor: Colors.purple,
                                       radius: 25.0,
                                       child: new Icon(
                                         Icons.camera_alt,
@@ -120,7 +120,7 @@ class MapScreenState extends State<ProfilePageWidget>
                                     mainAxisSize: MainAxisSize.min,
                                     children: <Widget>[
                                       new Text(
-                                        'Parsonal Information',
+                                        'Personal Information',
                                         style: TextStyle(
                                             fontSize: 18.0,
                                             fontWeight: FontWeight.bold),
@@ -359,7 +359,7 @@ class MapScreenState extends State<ProfilePageWidget>
                   child: new RaisedButton(
                     child: new Text("Save"),
                     textColor: Colors.white,
-                    color: Color(0xFFCD5E77),
+                    color: Colors.purple,
                     onPressed: () {
                       setState(() {
                         _status = true;

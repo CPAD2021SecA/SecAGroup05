@@ -119,7 +119,7 @@ class _CreatePostWidgetState extends State<CreatePostWidget> {
                               image: DecorationImage(
                                 fit: BoxFit.contain,
                                 image: Image.asset(
-                                  '../assets/images/addImage.jpg',
+                                  'assets/images/addImage.jpg',
                                 ).image,
                               ),
                               boxShadow: [

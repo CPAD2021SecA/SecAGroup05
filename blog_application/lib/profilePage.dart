@@ -1,7 +1,6 @@
 import 'package:blog_application/login.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:blog_application/blogDashboard.dart';
 
 
 class ProfilePageWidget extends StatefulWidget {
@@ -74,7 +73,7 @@ class MapScreenState extends State<ProfilePageWidget>
                                       shape: BoxShape.circle,
                                       image: new DecorationImage(
                                         image: new ExactAssetImage(
-                                            '../assets/images/user.png'),
+                                            'assets/images/user.png'),
                                         fit: BoxFit.cover,
                                       ),
                                     )),

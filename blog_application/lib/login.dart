@@ -1,19 +1,26 @@
 import 'package:blog_application/home.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:blog_application/blogDashboard.dart';
-import 'package:blog_application/profilePage.dart';
+import 'package:google_sign_in/google_sign_in.dart' as gs;
+import 'package:google_sign_in/google_sign_in.dart';
+
 
 import 'createAccount.dart';
+import 'main.dart';
 
 class LoginPageWidget extends StatefulWidget {
   // const LoginPageWidget({Key key}) : super(key: key);
+
 
   @override
   _LoginPageWidgetState createState() => _LoginPageWidgetState();
 }
 
 class _LoginPageWidgetState extends State<LoginPageWidget> {
+  // creating firebase instance
+  final FirebaseAuth auth = FirebaseAuth.instance;
   late TextEditingController emailTextController;
   late TextEditingController passwordTextController;
   late bool passwordVisibility;
@@ -39,7 +46,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
           Align(
             alignment: AlignmentDirectional(0, -1),
             child: Image.asset(
-              '../assets/images/loginBackground.png',
+              'assets/images/loginBackground.png',
               width: double.infinity,
               height: 250,
               fit: BoxFit.cover,
@@ -68,9 +75,9 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                           children: [
                             Padding(
                               padding:
-                              EdgeInsetsDirectional.fromSTEB(0, 0, 0, 12),
+                                  EdgeInsetsDirectional.fromSTEB(0, 0, 0, 12),
                               child: Image.asset(
-                                '../assets/images/icon.png',
+                                'assets/images/icon.png',
                                 width: 120,
                                 fit: BoxFit.cover,
                               ),
@@ -107,7 +114,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                               width: 1,
                                             ),
                                             borderRadius:
-                                            const BorderRadius.only(
+                                                const BorderRadius.only(
                                               topLeft: Radius.circular(4.0),
                                               topRight: Radius.circular(4.0),
                                             ),
@@ -118,7 +125,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                               width: 1,
                                             ),
                                             borderRadius:
-                                            const BorderRadius.only(
+                                                const BorderRadius.only(
                                               topLeft: Radius.circular(4.0),
                                               topRight: Radius.circular(4.0),
                                             ),
@@ -162,7 +169,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                               width: 1,
                                             ),
                                             borderRadius:
-                                            const BorderRadius.only(
+                                                const BorderRadius.only(
                                               topLeft: Radius.circular(4.0),
                                               topRight: Radius.circular(4.0),
                                             ),
@@ -173,21 +180,21 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                               width: 1,
                                             ),
                                             borderRadius:
-                                            const BorderRadius.only(
+                                                const BorderRadius.only(
                                               topLeft: Radius.circular(4.0),
                                               topRight: Radius.circular(4.0),
                                             ),
                                           ),
                                           suffixIcon: InkWell(
                                             onTap: () => setState(
-                                                  () => passwordVisibility =
-                                              !passwordVisibility,
+                                              () => passwordVisibility =
+                                                  !passwordVisibility,
                                             ),
                                             child: Icon(
                                               passwordVisibility
                                                   ? Icons.visibility_outlined
                                                   : Icons
-                                                  .visibility_off_outlined,
+                                                      .visibility_off_outlined,
                                               size: 22,
                                             ),
                                           ),
@@ -213,7 +220,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                           MaterialPageRoute(
                                             builder: (context) =>
                                                 BlogDashboardWidget(),
-                                                // HomePage(),
+                                            // HomePage(),
                                           ),
                                         );
                                       } finally {
@@ -237,7 +244,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                           }
                                         } finally {
                                           setState(
-                                                  () => _loadingButton1 = false);
+                                              () => _loadingButton1 = false);
                                         }
                                       },
                                       // text: 'Sign in with email',
@@ -261,15 +268,17 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                   ),
                                 ),
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 15),
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0, 0, 0, 15),
                                   child: InkWell(
                                     onTap: () async {
                                       await Navigator.pushAndRemoveUntil(
                                         context,
                                         MaterialPageRoute(
-                                          builder: (context) => CreateAccountPageWidget(),
+                                          builder: (context) =>
+                                              CreateAccountPageWidget(),
                                         ),
-                                            (r) => false,
+                                        (r) => false,
                                       );
                                     },
                                     child: Text(
@@ -288,7 +297,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                               alignment: AlignmentDirectional(0, 0),
                               child: Padding(
                                 padding:
-                                EdgeInsetsDirectional.fromSTEB(0, 0, 0, 15),
+                                    EdgeInsetsDirectional.fromSTEB(0, 0, 0, 15),
                                 child: Container(
                                   width: 250,
                                   height: 50,
@@ -299,45 +308,47 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                         child: ElevatedButton(
                                           child: Text('Login with Google'),
                                           style: ElevatedButton.styleFrom(
-                                            primary: Colors.purple, // background
+                                            primary: Colors.purple,
+                                            // background
                                             onPrimary: Colors.white,
                                           ), // background
-                                          onPressed: () async {
-                                            setState(
-                                                    () => _loadingButton2 = true);
-                                            try {
-                                              final user =
-                                              await signInWithGoogle(
-                                                  context);
-                                              if (user == null) {
-                                                return;
-                                              }
-                                              await Navigator
-                                                  .pushAndRemoveUntil(
-                                                context,
-                                                MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      BlogDashboardWidget(),
-                                                ),
-                                                    (r) => false,
-                                              );
-                                            } finally {
-                                              setState(() =>
-                                              _loadingButton2 = false);
-                                            }
+                                          onPressed: (){
+                                              signInWithGoogle(context);
                                           },
+                                          // onPressed: () async {
+                                          //   setState(
+                                          //       () => _loadingButton2 = true);
+                                          //   try {
+                                          //     final user =
+                                          //     await signInWithGoogle(
+                                          //         context);
+                                          //     if (user != null) {
+                                          //       await Navigator
+                                          //           .pushAndRemoveUntil(
+                                          //         context,
+                                          //         MaterialPageRoute(
+                                          //           builder: (context) =>
+                                          //               BlogDashboardWidget(),
+                                          //         ),
+                                          //             (r) => false,
+                                          //       );
+                                          //     }
+                                          //   } finally {
+                                          //     setState(() =>
+                                          //         _loadingButton2 = false);
+                                          //   }
+                                          // },
                                           // text: 'Sign in with Google',
                                           // icon: Icon(
                                           //   Icons.add,
                                           //   color: Colors.transparent,
                                           //   size: 20,
                                           // ),
-
                                         ),
                                       ),
                                       Align(
                                         alignment:
-                                        AlignmentDirectional(-0.83, 0),
+                                            AlignmentDirectional(-0.83, 0),
                                         child: Container(
                                           width: 22,
                                           height: 22,
@@ -356,70 +367,6 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                 ),
                               ),
                             ),
-                            Align(
-                              alignment: AlignmentDirectional(0, 0),
-                              child: Container(
-                                width: 250,
-                                height: 50,
-                                child: Stack(
-                                  children: [
-                                    Align(
-                                      alignment: AlignmentDirectional(0, 0),
-                                      child: ElevatedButton(
-                                        child: Text('Login with Facebook'),
-                                        style: ElevatedButton.styleFrom(
-                                          primary: Colors.purple, // background
-                                          onPrimary: Colors.white, //foreground
-                                        ),
-                                        onPressed: () async {
-                                          setState(
-                                                  () => _loadingButton3 = true);
-                                          try {
-                                            final user =
-                                            await signInWithFacebook(
-                                                context);
-                                            if (user == null) {
-                                              return;
-                                            }
-                                            await Navigator.pushAndRemoveUntil(
-                                              context,
-                                              MaterialPageRoute(
-                                                builder: (context) =>
-                                                    BlogDashboardWidget(),
-                                              ),
-                                                  (r) => false,
-                                            );
-                                          } finally {
-                                            setState(
-                                                    () => _loadingButton3 = false);
-                                          }
-                                        },
-                                        // icon: Icon(
-                                        //   Icons.add,
-                                        //   color: Colors.transparent,
-                                        //   size: 20,
-                                        // )
-                                      ),
-                                    ),
-                                    Align(
-                                      alignment: AlignmentDirectional(-0.83, 0),
-                                      child: Container(
-                                        width: 22,
-                                        height: 22,
-                                        clipBehavior: Clip.antiAlias,
-                                        decoration: BoxDecoration(
-                                          shape: BoxShape.circle,
-                                        ),
-                                        child:  Image.asset(
-                                          '../assets/images/facebook.png',
-                                          fit: BoxFit.contain,
-                                        ),
-                                      ),
-                                    )
-                                  ],
-                                ),
-                              ),
-                            )
                           ],
                         ),
                       ),
@@ -433,16 +380,34 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
       ),
     );
   }
-  signInWithFacebook(BuildContext context) {
 
-  }
 
-  signInWithEmail(BuildContext context, String text, String text2) {
+  signInWithEmail(BuildContext context, String text, String text2) {}
 
-  }
+// function to implement the google signin
 
-  signInWithGoogle(BuildContext context) {
 
+
+  Future<void> signInWithGoogle(BuildContext context) async {
+
+    final gs.GoogleSignIn googleSignIn = new gs.GoogleSignIn(clientId: "609421566052-483o7psiht39jlbdapbok51s940p589m.apps.googleusercontent.com");
+    final gs.GoogleSignInAccount? googleSignInAccount = await googleSignIn.signIn();
+    // print(FirebaseAuth.instance.currentUser!.uid);
+    if (googleSignInAccount != null) {
+      // print(FirebaseAuth.instance.currentUser!.uid);
+      final GoogleSignInAuthentication googleSignInAuthentication =
+          await googleSignInAccount.authentication;
+      final AuthCredential authCredential = GoogleAuthProvider.credential(
+          idToken: googleSignInAuthentication.idToken,
+          accessToken: googleSignInAuthentication.accessToken);
+
+      // Getting users credential
+      UserCredential result = await auth.signInWithCredential(authCredential);
+      User? user = result.user;
+      if (result != null) {
+        Navigator.pushReplacement(
+            context, MaterialPageRoute(builder: (context) => BlogDashboardWidget()));
+      }
+    }
   }
 }
-

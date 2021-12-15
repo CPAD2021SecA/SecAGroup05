@@ -36,7 +36,7 @@ class _CreateAccountPageWidgetState extends State<CreateAccountPageWidget> {
           Align(
             alignment: AlignmentDirectional(0, -1),
             child: Image.asset(
-              '../assets/images/loginBackground.png',
+              'assets/images/loginBackground.png',
               width: double.infinity,
               height: 250,
               fit: BoxFit.cover,
@@ -67,7 +67,7 @@ class _CreateAccountPageWidgetState extends State<CreateAccountPageWidget> {
                               padding:
                               EdgeInsetsDirectional.fromSTEB(0, 0, 0, 20),
                               child: Image.asset(
-                                '../assets/images/icon.png',
+                                'assets/images/icon.png',
                                 width: 120,
                                 fit: BoxFit.cover,
                               ),

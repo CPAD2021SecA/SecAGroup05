@@ -1,6 +1,6 @@
 // This is a generated file; do not edit or check into version control.
-FLUTTER_ROOT=C:\Users\madhumitha.anand@sap.com\Documents\Flutter\flutter
-FLUTTER_APPLICATION_PATH=C:\Users\madhumitha.anand@sap.com\Documents\Flutter Projects\SecAGroup05\blog_application
+FLUTTER_ROOT=C:\flutter
+FLUTTER_APPLICATION_PATH=C:\Users\I524770\Desktop\SecAGroup05\blog_application
 COCOAPODS_PARALLEL_CODE_SIGN=true
 FLUTTER_TARGET=lib\main.dart
 FLUTTER_BUILD_DIR=build

@@ -129,9 +129,9 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
-#  assets:
-#    - assets/images/
-#    - assets/videos/
-#    - assets/audios/
-#    - assets/lottie_animations/
-#    - assets/rive_animations/
+  assets:
+    - assets/images/
+    - assets/videos/
+    - assets/audios/
+    - assets/lottie_animations/
+    - assets/rive_animations/

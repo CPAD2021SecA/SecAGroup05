@@ -1,4 +1,3 @@
-import 'package:blog_application/home.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -7,12 +6,11 @@ import 'package:google_sign_in/google_sign_in.dart' as gs;
 import 'package:google_sign_in/google_sign_in.dart';
 
 
+import 'auth.dart';
 import 'createAccount.dart';
 import 'main.dart';
 
 class LoginPageWidget extends StatefulWidget {
-  // const LoginPageWidget({Key key}) : super(key: key);
-
 
   @override
   _LoginPageWidgetState createState() => _LoginPageWidgetState();
@@ -28,6 +26,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
   bool _loadingButton2 = false;
   bool _loadingButton3 = false;
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  var authHandler = new Auth();
 
   @override
   void initState() {
@@ -231,39 +230,17 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                       child: Text('Sign in with email'),
                                       textColor: Colors.white,
                                       color: Colors.purple,
-                                      onPressed: () async {
-                                        setState(() => _loadingButton1 = true);
-                                        try {
-                                          final user = await signInWithEmail(
-                                            context,
-                                            emailTextController.text,
-                                            passwordTextController.text,
-                                          );
-                                          if (user == null) {
-                                            return;
-                                          }
-                                        } finally {
-                                          setState(
-                                              () => _loadingButton1 = false);
+                                        onPressed: () {
+                                          authHandler.handleSignInEmail(
+                                              emailTextController.text,
+                                              passwordTextController.text)
+                                              .then((User user) {
+                                            Navigator.push(context,
+                                                new MaterialPageRoute(builder: (
+                                                    context) => new BlogDashboardWidget()));
+                                            showFlushbar(context);
+                                          }).catchError((e) => printError(e, context));
                                         }
-                                      },
-                                      // text: 'Sign in with email',
-                                      // options: FFButtonOptions(
-                                      //   width: 300,
-                                      //   height: 50,
-                                      //   color: Colors.black,
-                                      //   textStyle: GoogleFonts.getFont(
-                                      //     'Open Sans',
-                                      //     color: Color(0xFFDEDEDE),
-                                      //     fontSize: 16,
-                                      //   ),
-                                      //   borderSide: BorderSide(
-                                      //     color: Colors.transparent,
-                                      //     width: 0,
-                                      //   ),
-                                      //   borderRadius: 25,
-                                      // ),
-                                      // loading: _loadingButton1,
                                     ),
                                   ),
                                 ),
@@ -282,12 +259,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                       );
                                     },
                                     child: Text(
-                                      'Not an User Yet? Create Account',
-                                      // style: FlutterFlowTheme.bodyText1.override(
-                                      //   fontFamily: 'Playfair Display',
-                                      //   color: Color(0xFF1F1F1F),
-                                      //   fontWeight: FontWeight.normal,
-                                      // ),
+                                      'Create Account',
                                     ),
                                   ),
                                 )
@@ -315,35 +287,6 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                           onPressed: (){
                                               signInWithGoogle(context);
                                           },
-                                          // onPressed: () async {
-                                          //   setState(
-                                          //       () => _loadingButton2 = true);
-                                          //   try {
-                                          //     final user =
-                                          //     await signInWithGoogle(
-                                          //         context);
-                                          //     if (user != null) {
-                                          //       await Navigator
-                                          //           .pushAndRemoveUntil(
-                                          //         context,
-                                          //         MaterialPageRoute(
-                                          //           builder: (context) =>
-                                          //               BlogDashboardWidget(),
-                                          //         ),
-                                          //             (r) => false,
-                                          //       );
-                                          //     }
-                                          //   } finally {
-                                          //     setState(() =>
-                                          //         _loadingButton2 = false);
-                                          //   }
-                                          // },
-                                          // text: 'Sign in with Google',
-                                          // icon: Icon(
-                                          //   Icons.add,
-                                          //   color: Colors.transparent,
-                                          //   size: 20,
-                                          // ),
                                         ),
                                       ),
                                       Align(
@@ -382,12 +325,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
   }
 
 
-  signInWithEmail(BuildContext context, String text, String text2) {}
-
-// function to implement the google signin
-
-
-
+  // function to implement the google signin
   Future<void> signInWithGoogle(BuildContext context) async {
 
     final gs.GoogleSignIn googleSignIn = new gs.GoogleSignIn(clientId: "609421566052-483o7psiht39jlbdapbok51s940p589m.apps.googleusercontent.com");
@@ -409,5 +347,16 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
             context, MaterialPageRoute(builder: (context) => BlogDashboardWidget()));
       }
     }
+  }
+
+  void printError(e, BuildContext context) {
+    print(e.toString());
+    final snackBar = SnackBar(content: Text('Unsuccessful login! Please try again'));
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+  }
+
+  void showFlushbar(BuildContext context) {
+    final snackBar = SnackBar(content: Text('Successful login! Welcome back!'));
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
 }

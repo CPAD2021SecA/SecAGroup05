@@ -4,8 +4,9 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:blog_application/profilePage.dart';
 import 'package:blog_application/createPost.dart';
 
+import 'auth.dart';
+
 class BlogDashboardWidget extends StatefulWidget {
-  // const BlogDashboardWidget({Key key}) : super(key: key);
 
   @override
   _BlogDashboardWidgetState createState() => _BlogDashboardWidgetState();
@@ -13,6 +14,7 @@ class BlogDashboardWidget extends StatefulWidget {
 
 class _BlogDashboardWidgetState extends State<BlogDashboardWidget> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  var authHandler = new Auth();
   @override
   Widget build(BuildContext context) {
 
@@ -24,60 +26,9 @@ class _BlogDashboardWidgetState extends State<BlogDashboardWidget> {
         children: [
           Container(
             width: MediaQuery.of(context).size.width,
-            height: 100,
+            height: 10,
             decoration: BoxDecoration(
               color: Colors.white,
-            ),
-            child: Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(16, 44, 0, 0),
-              child: Column(
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  Row(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Text(
-                        'Welcome',
-                        // style: FlutterFlowTheme.title1.override(
-                        //   fontFamily: 'Lexend Deca',
-                        //   color: Color(0xFF090F13),
-                        //   fontSize: 24,
-                        //   fontWeight: FontWeight.bold,
-                        // ),
-                      ),
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(4, 0, 0, 0),
-                        child: Text(
-                          '[userName]',
-                          // style: FlutterFlowTheme.title1.override(
-                          //   fontFamily: 'Lexend Deca',
-                          //   color: Color(0xFFCD5E77),
-                          //   fontSize: 24,
-                          //   fontWeight: FontWeight.w500,
-                          // ),
-                        ),
-                      )
-                    ],
-                  ),
-                  Row(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(0, 4, 0, 0),
-                        child: Text(
-                          'Checkout news and highlights below.',
-                          // style: FlutterFlowTheme.bodyText2.override(
-                          //   fontFamily: 'Lexend Deca',
-                          //   color: Color(0xFF8B97A2),
-                          //   fontSize: 14,
-                          //   fontWeight: FontWeight.w500,
-                          // ),
-                        ),
-                      )
-                    ],
-                  )
-                ],
-              ),
             ),
           ),
           Expanded(
@@ -145,7 +96,6 @@ class _BlogDashboardWidgetState extends State<BlogDashboardWidget> {
                                         ),
                                         child: Image.asset(
                                           'assets/images/postBackground.jpg',
-                                          // 'https://picsum.photos/seed/400/600',
                                           width:
                                           MediaQuery.of(context).size.width,
                                           height: 300,
@@ -171,13 +121,6 @@ class _BlogDashboardWidgetState extends State<BlogDashboardWidget> {
                                             ),
                                             Text(
                                               'Hello World',
-                                              // style: FlutterFlowTheme.bodyText1
-                                              //     .override(
-                                              //   fontFamily: 'Lexend Deca',
-                                              //   color: Color(0xFF010000),
-                                              //   fontSize: 20,
-                                              //   fontWeight: FontWeight.bold,
-                                              // ),
                                             )
                                           ],
                                         ),
@@ -194,15 +137,6 @@ class _BlogDashboardWidgetState extends State<BlogDashboardWidget> {
                                                     .fromSTEB(0, 0, 0, 8),
                                                 child: Text(
                                                   'We cleaned up a lot of visual clutter. There are fewer gray backgrounds and unnecessary divider lines. We also increased space to make text easier to read.',
-                                                  // style: FlutterFlowTheme
-                                                  //     .bodyText2
-                                                  //     .override(
-                                                  //   fontFamily: 'Lexend Deca',
-                                                  //   color: Color(0xFF8B97A2),
-                                                  //   fontSize: 14,
-                                                  //   fontWeight:
-                                                  //   FontWeight.normal,
-                                                  // ),
                                                 ),
                                               ),
                                             )
@@ -230,15 +164,6 @@ class _BlogDashboardWidgetState extends State<BlogDashboardWidget> {
                                                       .fromSTEB(12, 0, 0, 0),
                                                   child: Text(
                                                     'userName',
-                                                    // style: FlutterFlowTheme
-                                                    //     .subtitle1
-                                                    //     .override(
-                                                    //   fontFamily: 'Lexend Deca',
-                                                    //   color: Color(0xFF151B1E),
-                                                    //   fontSize: 18,
-                                                    //   fontWeight:
-                                                    //   FontWeight.w500,
-                                                    // ),
                                                   ),
                                                 )
                                               ],
@@ -251,15 +176,6 @@ class _BlogDashboardWidgetState extends State<BlogDashboardWidget> {
                                                       .fromSTEB(4, 0, 0, 0),
                                                   child: Text(
                                                     '2h',
-                                                    // style: FlutterFlowTheme
-                                                    //     .bodyText2
-                                                    //     .override(
-                                                    //   fontFamily: 'Lexend Deca',
-                                                    //   color: Color(0xFF8B97A2),
-                                                    //   fontSize: 14,
-                                                    //   fontWeight:
-                                                    //   FontWeight.normal,
-                                                    // ),
                                                   ),
                                                 )
                                               ],
@@ -329,14 +245,6 @@ class _BlogDashboardWidgetState extends State<BlogDashboardWidget> {
                                                     .fromSTEB(12, 0, 0, 0),
                                                 child: Text(
                                                   'userName',
-                                                  // style: FlutterFlowTheme
-                                                  //     .subtitle1
-                                                  //     .override(
-                                                  //   fontFamily: 'Lexend Deca',
-                                                  //   color: Color(0xFF151B1E),
-                                                  //   fontSize: 18,
-                                                  //   fontWeight: FontWeight.w500,
-                                                  // ),
                                                 ),
                                               ),
                                               Padding(
@@ -344,15 +252,6 @@ class _BlogDashboardWidgetState extends State<BlogDashboardWidget> {
                                                     .fromSTEB(4, 0, 0, 0),
                                                 child: Text(
                                                   '2h',
-                                                  // style: FlutterFlowTheme
-                                                  //     .bodyText2
-                                                  //     .override(
-                                                  //   fontFamily: 'Lexend Deca',
-                                                  //   color: Color(0xFF8B97A2),
-                                                  //   fontSize: 14,
-                                                  //   fontWeight:
-                                                  //   FontWeight.normal,
-                                                  // ),
                                                 ),
                                               )
                                             ],
@@ -371,15 +270,6 @@ class _BlogDashboardWidgetState extends State<BlogDashboardWidget> {
                                                       .fromSTEB(0, 0, 0, 8),
                                                   child: Text(
                                                     'We cleaned up a lot of visual clutter. There are fewer gray backgrounds and unnecessary divider lines. We also increased space to make text easier to read.',
-                                                    // style: FlutterFlowTheme
-                                                    //     .bodyText2
-                                                    //     .override(
-                                                    //   fontFamily: 'Lexend Deca',
-                                                    //   color: Color(0xFF8B97A2),
-                                                    //   fontSize: 14,
-                                                    //   fontWeight:
-                                                    //   FontWeight.normal,
-                                                    // ),
                                                   ),
                                                 ),
                                               )
@@ -419,19 +309,6 @@ class _BlogDashboardWidgetState extends State<BlogDashboardWidget> {
                                                               0, 0, 0),
                                                           child: Text(
                                                             '2,493',
-                                                            // style:
-                                                            // FlutterFlowTheme
-                                                            //     .bodyText2
-                                                            //     .override(
-                                                            //   fontFamily:
-                                                            //   'Lexend Deca',
-                                                            //   color: Color(
-                                                            //       0xFF8B97A2),
-                                                            //   fontSize: 14,
-                                                            //   fontWeight:
-                                                            //   FontWeight
-                                                            //       .normal,
-                                                            // ),
                                                           ),
                                                         )
                                                       ],
@@ -502,74 +379,6 @@ class _BlogDashboardWidgetState extends State<BlogDashboardWidget> {
               ),
             ),
           ),
-
-          // Container(
-          //   decoration: BoxDecoration(
-          //     color: Color(0xFFEEEEEE),
-          //   ),
-          //   child: Align(
-          //     alignment: AlignmentDirectional(0, 1),
-          //     child: Row(
-          //       mainAxisSize: MainAxisSize.max,
-          //       children: [
-          //         Padding(
-          //           padding: EdgeInsetsDirectional.fromSTEB(30, 0, 100, 0),
-          //           child: InkWell(
-          //             onTap: () async {
-          //               await Navigator.push(
-          //                 context,
-          //                 MaterialPageRoute(
-          //                   builder: (context) => BlogDashboardWidget(),
-          //                 ),
-          //               );
-          //             },
-          //             child: Icon(
-          //               Icons.home_rounded,
-          //               color: Color(0xFFCD5E77),
-          //               size: 25,
-          //             ),
-          //           ),
-          //         ),
-          //         Padding(
-          //           padding: EdgeInsetsDirectional.fromSTEB(20, 0, 100, 0),
-          //           child: InkWell(
-          //           onTap: () async {
-          //             await Navigator.push(
-          //               context,
-          //               MaterialPageRoute(
-          //                   builder: (context) => CreatePostWidget(),
-          //           ),
-          //           );
-          //           },
-          //           child: Icon(
-          //             Icons.add_rounded,
-          //             color: Color(0xFFCD5E77),
-          //             size: 25,
-          //           ),
-          //           ),
-          //         ),
-          //         Padding(
-          //           padding: EdgeInsetsDirectional.fromSTEB(10, 10, 0, 10),
-          //           child: InkWell(
-          //             onTap: () async {
-          //               await Navigator.push(
-          //                 context,
-          //                 MaterialPageRoute(
-          //                   builder: (context) => ProfilePageWidget(),
-          //                 ),
-          //               );
-          //             },
-          //             child: Icon(
-          //               Icons.person_sharp,
-          //               color: Color(0xFFCD5E77),
-          //               size: 25,
-          //             ),
-          //           ),
-          //         )
-          //       ],
-          //     ),
-          //   ),
-          // )
         ],
       ),
       bottomNavigationBar: BottomAppBar(

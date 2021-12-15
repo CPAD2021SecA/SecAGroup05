@@ -1,12 +1,13 @@
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import 'auth.dart';
 import 'blogDashboard.dart';
 import 'login.dart';
 
 class CreateAccountPageWidget extends StatefulWidget {
-  // const CreateAccountPageWidget({Key key}) : super(key: key);
 
   @override
   _CreateAccountPageWidgetState createState() =>
@@ -18,6 +19,7 @@ class _CreateAccountPageWidgetState extends State<CreateAccountPageWidget> {
   late TextEditingController passwordTextController;
   late bool passwordVisibility;
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  var authHandler = new Auth();
 
   @override
   void initState() {
@@ -207,41 +209,16 @@ class _CreateAccountPageWidgetState extends State<CreateAccountPageWidget> {
                                       primary: Colors.purple, // background
                                       onPrimary: Colors.white,
                                     ),
-                                    onPressed: () async {
-                                      final user = await signInWithEmail(
-                                        context,
-                                        emailTextController.text,
-                                        passwordTextController.text,
-                                      );
-                                      if (user == null) {
-                                        return;
-                                      }
-
-                                      await Navigator.pushAndRemoveUntil(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) =>
-                                              BlogDashboardWidget(),
-                                        ),
-                                            (r) => false,
-                                      );
-                                    },
-                                    // text: 'Create Account',
-                                    // options: FFButtonOptions(
-                                    //   width: 300,
-                                    //   height: 50,
-                                    //   color: Colors.black,
-                                    //   textStyle: GoogleFonts.getFont(
-                                    //     'Open Sans',
-                                    //     color: Color(0xFFDEDEDE),
-                                    //     fontSize: 16,
-                                    //   ),
-                                    //   borderSide: BorderSide(
-                                    //     color: Colors.transparent,
-                                    //     width: 0,
-                                    //   ),
-                                    //   borderRadius: 25,
-                                    // ),
+                                    onPressed: () {
+                                      authHandler.handleSignUp(
+                                          emailTextController.text,
+                                          passwordTextController.text)
+                                          .then((User user) {
+                                        Navigator.push(context,
+                                            new MaterialPageRoute(builder: (
+                                                context) => new BlogDashboardWidget()));
+                                      }).catchError((e) => printError(e, context));
+                                    }
                                   ),
                                 ),
                                 InkWell(
@@ -280,5 +257,9 @@ class _CreateAccountPageWidgetState extends State<CreateAccountPageWidget> {
     );
   }
 
-  signInWithEmail(BuildContext context, String text, String text2) {}
+  void printError(e, BuildContext context) {
+    print(e.toString());
+    final snackBar = SnackBar(content: Text('Unsuccessful Registration :('));
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+  }
 }

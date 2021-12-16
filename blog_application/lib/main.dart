@@ -1,5 +1,7 @@
+import 'package:blog_application/providers/blog_provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import 'login.dart';
 
@@ -30,18 +32,16 @@ class GoogleSignIn extends StatefulWidget {
 class _GoogleSignInState extends State<GoogleSignIn> {
   @override
   Widget build(BuildContext context) {
-    // we return the MaterialApp here ,
-    // MaterialApp contain some basic ui for android ,
-    return MaterialApp(
-      //materialApp title
-      title: 'Blog App',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.green,
-      ),
 
-      // home property contain SignInScreen widget
-      home: LoginPageWidget(),
+    return MultiProvider(
+      providers:[
+        ChangeNotifierProvider(create: (context) => BlogProvider())
+      ],
+      child: MaterialApp(
+        title: 'Blog Application',
+        debugShowCheckedModeBanner: false,
+        home: LoginPageWidget(),
+      ),
     );
   }
 }

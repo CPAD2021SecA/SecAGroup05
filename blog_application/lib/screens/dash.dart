@@ -1,10 +1,12 @@
 
+import 'package:blog_application/addPost.dart';
+import 'package:blog_application/models/blog.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:blog_application/profilePage.dart';
-import 'package:blog_application/createPost.dart';
-
-import 'auth.dart';
+import 'package:provider/provider.dart';
+import '../auth.dart';
 
 class BlogDashboardWidget extends StatefulWidget {
 
@@ -15,9 +17,126 @@ class BlogDashboardWidget extends StatefulWidget {
 class _BlogDashboardWidgetState extends State<BlogDashboardWidget> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
   var authHandler = new Auth();
+
   @override
   Widget build(BuildContext context) {
-
+    // return Scaffold(
+    //   key: scaffoldKey,
+    //   backgroundColor: Colors.white,
+    //   body: Column(
+    //     mainAxisSize: MainAxisSize.max,
+    //     children: [
+    //       Container(
+    //         width: MediaQuery.of(context).size.width,
+    //         height: 100,
+    //         decoration: BoxDecoration(
+    //           color: Colors.white,
+    //         ),
+    //
+    //       ),
+    //       Expanded(
+    //         child: DefaultTabController(
+    //           length: 2,
+    //           initialIndex: 0,
+    //           child: Column(
+    //             children: [
+    //               TabBar(
+    //                 isScrollable: true,
+    //                 labelColor: Color(0xFF8E24AA),
+    //                 unselectedLabelColor: Color(0xFF95A1AC),
+    //                 labelStyle: GoogleFonts.getFont(
+    //                   'Roboto',
+    //                 ),
+    //                 indicatorColor: Color(0xFF8E24AA),
+    //                 indicatorWeight: 3,
+    //                 tabs: [
+    //                   Tab(
+    //                     text: 'My Feed',
+    //                   ),
+    //                   Tab(
+    //                     text: 'Categories',
+    //                   )
+    //                 ],
+    //               ),
+    //               Expanded(
+    //                 child: TabBarView(
+    //                   children: [
+    //                     StreamBuilder<QuerySnapshot>(
+    //                       stream: FirebaseFirestore.instance.collection('blogs').snapshots(),
+    //                       builder: (context, snapshot){
+    //                         return ListView.builder(
+    //                           itemCount: snapshot.data!.docs.length,
+    //                           itemBuilder: (context, index){
+    //                             DocumentSnapshot docblog = snapshot.data!.docs[index];
+    //                             return Card(
+    //                                 child: ListTile(
+    //                                     title: Text(docblog['title'],style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+    //                                     trailing: Text(docblog['category']),
+    //                                     subtitle: Text(docblog['description'])
+    //                                 ));
+    //                           },
+    //                         );
+    //                       },
+    //                     )
+    //                   ],
+    //                 ),
+    //               ),
+    //             ],
+    //           ),
+    //         ),
+    //       ),
+    //
+    //
+    //     ],
+    //   ),
+    //   bottomNavigationBar: BottomAppBar(
+    //     child: Container(
+    //       decoration: BoxDecoration(
+    //         gradient: LinearGradient(colors: [Color(0xFFBA68C8), Color(0xFF8E24AA)]),
+    //       ),
+    //       child: Padding(
+    //         padding: EdgeInsets.only(left: 20, right: 20, top: 5, bottom: 5),
+    //         child: Row(
+    //           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    //           children: <Widget>[
+    //             IconButton(
+    //                 tooltip: 'Home',
+    //                 icon: Icon(Icons.home),
+    //                 onPressed: () {
+    //                   Navigator.push(
+    //                       context,
+    //                       MaterialPageRoute(
+    //                         builder: (context) => BlogDashboardWidget(),
+    //                       ));
+    //                 }),
+    //             IconButton(
+    //                 tooltip: 'Add post',
+    //                 icon: Icon(Icons.add_circle),
+    //                 onPressed: () {
+    //                   Navigator.push(
+    //                       context,
+    //                       MaterialPageRoute(
+    //                         builder: (context) => AddPostWidget(),
+    //                         //CreatePostWidget(),
+    //                       ));
+    //                 }),
+    //             IconButton(
+    //                 tooltip: 'Profile',
+    //                 icon: Icon(Icons.person),
+    //                 onPressed: () {
+    //                   Navigator.push(
+    //                       context,
+    //                       MaterialPageRoute(
+    //                         builder: (context) => ProfilePageWidget(),
+    //                       ));
+    //                 }),
+    //           ],
+    //         ),
+    //       ),
+    //     ),
+    //   ),
+    // );
+    // final blogs = Provider.of<List<Blog>>(context);
     return Scaffold(
       key: scaffoldKey,
       backgroundColor: Colors.white,
@@ -25,7 +144,10 @@ class _BlogDashboardWidgetState extends State<BlogDashboardWidget> {
         mainAxisSize: MainAxisSize.max,
         children: [
           Container(
-            width: MediaQuery.of(context).size.width,
+            width: MediaQuery
+                .of(context)
+                .size
+                .width,
             height: 10,
             decoration: BoxDecoration(
               color: Colors.white,
@@ -64,6 +186,7 @@ class _BlogDashboardWidgetState extends State<BlogDashboardWidget> {
                           decoration: BoxDecoration(
                             color: Color(0xFFF1F4F8),
                           ),
+
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
                             children: [
@@ -72,7 +195,10 @@ class _BlogDashboardWidgetState extends State<BlogDashboardWidget> {
                                 EdgeInsetsDirectional.fromSTEB(0, 6, 0, 0),
                                 child: Container(
                                   width:
-                                  MediaQuery.of(context).size.width * 0.96,
+                                  MediaQuery
+                                      .of(context)
+                                      .size
+                                      .width * 0.96,
                                   decoration: BoxDecoration(
                                     color: Colors.white,
                                     boxShadow: [
@@ -97,7 +223,10 @@ class _BlogDashboardWidgetState extends State<BlogDashboardWidget> {
                                         child: Image.asset(
                                           'assets/images/postBackground.jpg',
                                           width:
-                                          MediaQuery.of(context).size.width,
+                                          MediaQuery
+                                              .of(context)
+                                              .size
+                                              .width,
                                           height: 300,
                                           fit: BoxFit.fitWidth,
                                         ),
@@ -204,7 +333,10 @@ class _BlogDashboardWidgetState extends State<BlogDashboardWidget> {
                                 EdgeInsetsDirectional.fromSTEB(0, 6, 0, 6),
                                 child: Container(
                                   width:
-                                  MediaQuery.of(context).size.width * 0.96,
+                                  MediaQuery
+                                      .of(context)
+                                      .size
+                                      .width * 0.96,
                                   decoration: BoxDecoration(
                                     color: Colors.white,
                                     boxShadow: [
@@ -384,7 +516,8 @@ class _BlogDashboardWidgetState extends State<BlogDashboardWidget> {
       bottomNavigationBar: BottomAppBar(
         child: Container(
           decoration: BoxDecoration(
-            gradient: LinearGradient(colors: [Color(0xFFBA68C8), Color(0xFF8E24AA)]),
+            gradient: LinearGradient(
+                colors: [Color(0xFFBA68C8), Color(0xFF8E24AA)]),
           ),
           child: Padding(
             padding: EdgeInsets.only(left: 20, right: 20, top: 5, bottom: 5),
@@ -405,11 +538,11 @@ class _BlogDashboardWidgetState extends State<BlogDashboardWidget> {
                     tooltip: 'Add post',
                     icon: Icon(Icons.add_circle),
                     onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => CreatePostWidget(),
-                                ));
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => AddPostWidget(),
+                          ));
                     }),
                 IconButton(
                     tooltip: 'Profile',
@@ -429,8 +562,44 @@ class _BlogDashboardWidgetState extends State<BlogDashboardWidget> {
     );
   }
 }
-
-
-
-
-
+// import 'package:flutter/material.dart';
+// import 'package:provider/provider.dart';
+// import 'package:cloud_firestore/cloud_firestore.dart';
+// import '../models/blog.dart';
+// class BlogDashboardWidget extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     //final blogs = Provider.of<List<Blog>>(context);
+//     return Scaffold(
+//         appBar: AppBar(
+//           title: Text('Blogs'),
+//           actions: <Widget> [
+//             // IconButton(icon:Icon(Icons.add, size: 30.0),
+//             //   onPressed: () {
+//             //     Navigator.of(context).push(MaterialPageRoute(builder: (context) => EditBlog()));
+//             //   },),
+//             // IconButton(icon:Icon(Icons.account_circle, size: 30.0),
+//             //   onPressed: (){
+//             //     Navigator.of(context).push(MaterialPageRoute(builder: (context) => userProfile()));
+//             //   },)
+//           ],
+//         ),
+//         body: StreamBuilder<QuerySnapshot>(
+//           stream: FirebaseFirestore.instance.collection('blogs').snapshots(),
+//           builder: (context, snapshot){
+//             return ListView.builder(
+//               itemCount: snapshot.data!.docs.length,
+//               itemBuilder: (context, index){
+//                 DocumentSnapshot docblog = snapshot.data!.docs[index];
+//                 return ListTile(
+//                     title: Text(docblog['title'],style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+//                     trailing: Text(docblog['category']),
+//                     subtitle: Text(docblog['description'])
+//                 );
+//               },
+//             );
+//           },
+//         )
+//     );
+//   }
+// }

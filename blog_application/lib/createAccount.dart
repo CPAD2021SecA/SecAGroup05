@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'auth.dart';
-import 'blogDashboard.dart';
+import 'screens/blogDashboard.dart';
 import 'login.dart';
 
 class CreateAccountPageWidget extends StatefulWidget {

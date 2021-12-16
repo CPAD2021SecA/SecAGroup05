@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:blog_application/blogDashboard.dart';
+import 'package:blog_application/screens/blogDashboard.dart';
 import 'package:google_sign_in/google_sign_in.dart' as gs;
 import 'package:google_sign_in/google_sign_in.dart';
 

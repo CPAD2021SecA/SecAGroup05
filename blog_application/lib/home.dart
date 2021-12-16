@@ -1,4 +1,4 @@
-import 'package:blog_application/blogDashboard.dart';
+import 'package:blog_application/screens/blogDashboard.dart';
 import 'package:blog_application/createPost.dart';
 import 'package:blog_application/profilePage.dart';
 import 'package:flutter/material.dart';
@@ -18,7 +18,7 @@ class _HomePageState extends State<HomePage> {
 
   final _pageOptions = [
     BlogDashboardWidget(),
-    CreatePostWidget(),
+    // CreatePostWidget(),
     ProfilePageWidget()
   ];
 

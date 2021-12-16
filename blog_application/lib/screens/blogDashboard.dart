@@ -386,133 +386,200 @@ class _BlogDashboardWidgetState extends State<BlogDashboardWidget> {
                                                   shape: BoxShape.circle,
                                                 ),
                                                 child: Image.asset(
-                                                  'assets/images/user.png',
+                                                  'assets/images/health.png',
                                                 ),
                                               ),
                                               Padding(
                                                 padding: EdgeInsetsDirectional
                                                     .fromSTEB(12, 0, 0, 0),
                                                 child: Text(
-                                                  'userName',
+                                                  'Health',
+                                                ),
+                                              ),
+
+                                            ],
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                padding:
+                                EdgeInsetsDirectional.fromSTEB(0, 6, 0, 6),
+                                child: Container(
+                                  width:
+                                  MediaQuery
+                                      .of(context)
+                                      .size
+                                      .width * 0.96,
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    boxShadow: [
+                                      BoxShadow(
+                                        blurRadius: 4,
+                                        color: Color(0x2E000000),
+                                        offset: Offset(0, 2),
+                                      )
+                                    ],
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0, 1, 0, 0),
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Padding(
+                                          padding:
+                                          EdgeInsetsDirectional.fromSTEB(
+                                              12, 8, 12, 0),
+                                          child: Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              Container(
+                                                width: 50,
+                                                height: 50,
+                                                clipBehavior: Clip.antiAlias,
+                                                decoration: BoxDecoration(
+                                                  shape: BoxShape.circle,
+                                                ),
+                                                child: Image.asset(
+                                                  'assets/images/lifestyle.png',
                                                 ),
                                               ),
                                               Padding(
                                                 padding: EdgeInsetsDirectional
-                                                    .fromSTEB(4, 0, 0, 0),
+                                                    .fromSTEB(12, 0, 0, 0),
                                                 child: Text(
-                                                  '2h',
+                                                  'Lifestyle',
                                                 ),
-                                              )
-                                            ],
-                                          ),
-                                        ),
-                                        Padding(
-                                          padding:
-                                          EdgeInsetsDirectional.fromSTEB(
-                                              12, 4, 12, 0),
-                                          child: Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            children: [
-                                              Expanded(
-                                                child: Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(0, 0, 0, 8),
-                                                  child: Text(
-                                                    'We cleaned up a lot of visual clutter. There are fewer gray backgrounds and unnecessary divider lines. We also increased space to make text easier to read.',
-                                                  ),
-                                                ),
-                                              )
-                                            ],
-                                          ),
-                                        ),
-                                        Divider(
-                                          height: 3,
-                                          thickness: 1,
-                                          color: Color(0xFFE1E4E5),
-                                        ),
-                                        Padding(
-                                          padding:
-                                          EdgeInsetsDirectional.fromSTEB(
-                                              16, 0, 16, 4),
-                                          child: Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                            children: [
-                                              Row(
-                                                mainAxisSize: MainAxisSize.max,
-                                                children: [
-                                                  Padding(
-                                                    padding:
-                                                    EdgeInsetsDirectional
-                                                        .fromSTEB(
-                                                        0, 0, 16, 0),
-                                                    child: Row(
-                                                      mainAxisSize:
-                                                      MainAxisSize.max,
-                                                      children: [
-                                                        Padding(
-                                                          padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(4,
-                                                              0, 0, 0),
-                                                          child: Text(
-                                                            '2,493',
-                                                          ),
-                                                        )
-                                                      ],
-                                                    ),
-                                                  ),
-                                                  Row(
-                                                    mainAxisSize:
-                                                    MainAxisSize.max,
-                                                    children: [
-                                                      Icon(
-                                                        Icons
-                                                            .mode_comment_outlined,
-                                                        color:
-                                                        Color(0xFF95A1AC),
-                                                        size: 24,
-                                                      ),
-                                                      Padding(
-                                                        padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(
-                                                            4, 0, 0, 0),
-                                                        child: Text(
-                                                          '4',
-                                                          // style:
-                                                          // FlutterFlowTheme
-                                                          //     .bodyText2
-                                                          //     .override(
-                                                          //   fontFamily:
-                                                          //   'Lexend Deca',
-                                                          //   color: Color(
-                                                          //       0xFF8B97A2),
-                                                          //   fontSize: 14,
-                                                          //   fontWeight:
-                                                          //   FontWeight
-                                                          //       .normal,
-                                                          // ),
-                                                        ),
-                                                      )
-                                                    ],
-                                                  )
-                                                ],
                                               ),
-                                              Row(
-                                                mainAxisSize: MainAxisSize.max,
-                                                children: [
-                                                  Icon(
-                                                    Icons.ios_share,
-                                                    color: Color(0xFF95A1AC),
-                                                    size: 24,
-                                                  )
-                                                ],
-                                              )
+
                                             ],
                                           ),
-                                        )
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                padding:
+                                EdgeInsetsDirectional.fromSTEB(0, 6, 0, 6),
+                                child: Container(
+                                  width:
+                                  MediaQuery
+                                      .of(context)
+                                      .size
+                                      .width * 0.96,
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    boxShadow: [
+                                      BoxShadow(
+                                        blurRadius: 4,
+                                        color: Color(0x2E000000),
+                                        offset: Offset(0, 2),
+                                      )
+                                    ],
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0, 1, 0, 0),
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Padding(
+                                          padding:
+                                          EdgeInsetsDirectional.fromSTEB(
+                                              12, 8, 12, 0),
+                                          child: Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              Container(
+                                                width: 50,
+                                                height: 50,
+                                                clipBehavior: Clip.antiAlias,
+                                                decoration: BoxDecoration(
+                                                  shape: BoxShape.circle,
+                                                ),
+                                                child: Image.asset(
+                                                  'assets/images/sport.png',
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(12, 0, 0, 0),
+                                                child: Text(
+                                                  'Sports',
+                                                ),
+                                              ),
+
+                                            ],
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                padding:
+                                EdgeInsetsDirectional.fromSTEB(0, 6, 0, 6),
+                                child: Container(
+                                  width:
+                                  MediaQuery
+                                      .of(context)
+                                      .size
+                                      .width * 0.96,
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    boxShadow: [
+                                      BoxShadow(
+                                        blurRadius: 4,
+                                        color: Color(0x2E000000),
+                                        offset: Offset(0, 2),
+                                      )
+                                    ],
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0, 1, 0, 0),
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Padding(
+                                          padding:
+                                          EdgeInsetsDirectional.fromSTEB(
+                                              12, 8, 12, 0),
+                                          child: Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              Container(
+                                                width: 50,
+                                                height: 50,
+                                                clipBehavior: Clip.antiAlias,
+                                                decoration: BoxDecoration(
+                                                  shape: BoxShape.circle,
+                                                ),
+                                                child: Image.asset(
+                                                  'assets/images/fashion.png',
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(12, 0, 0, 0),
+                                                child: Text(
+                                                  'Fashion',
+                                                ),
+                                              ),
+
+                                            ],
+                                          ),
+                                        ),
                                       ],
                                     ),
                                   ),

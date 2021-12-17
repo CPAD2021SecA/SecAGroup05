@@ -77,18 +77,18 @@ class _BlogDashboardWidgetState extends State<BlogDashboardWidget> {
                                     itemCount: snapshot.data!.docs.length,
                                     itemBuilder: (context, index) {
                                       DocumentSnapshot docblog =
-                                          snapshot.data!.docs[index];
+                                      snapshot.data!.docs[index];
                                       return Column(
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
                                           Padding(
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0, 6, 0, 0),
+                                            EdgeInsetsDirectional.fromSTEB(
+                                                0, 6, 0, 0),
                                             child: Container(
                                               width: MediaQuery.of(context)
-                                                      .size
-                                                      .width *
+                                                  .size
+                                                  .width *
                                                   0.96,
                                               decoration: BoxDecoration(
                                                 color: Colors.white,
@@ -100,82 +100,106 @@ class _BlogDashboardWidgetState extends State<BlogDashboardWidget> {
                                                   )
                                                 ],
                                                 borderRadius:
-                                                    BorderRadius.circular(8),
+                                                BorderRadius.circular(8),
                                               ),
                                               child: Column(
                                                 mainAxisSize: MainAxisSize.max,
                                                 children: [
                                                   ClipRRect(
                                                     borderRadius:
-                                                        BorderRadius.only(
+                                                    BorderRadius.only(
                                                       bottomLeft:
-                                                          Radius.circular(0),
+                                                      Radius.circular(0),
                                                       bottomRight:
-                                                          Radius.circular(0),
+                                                      Radius.circular(0),
                                                       topLeft:
-                                                          Radius.circular(8),
+                                                      Radius.circular(8),
                                                       topRight:
-                                                          Radius.circular(8),
+                                                      Radius.circular(8),
                                                     ),
-                                                    child: Image.asset(
-                                                      'assets/images/postBackground.jpg',
+                                                    child: (docblog['category']=="Fashion") ? Image.asset(
+
+                                                      'assets/images/fashionBack.jfif',
                                                       width:
-                                                          MediaQuery.of(context)
-                                                              .size
-                                                              .width,
-                                                      height: 300,
+                                                      MediaQuery.of(context)
+                                                          .size
+                                                          .width,
+                                                      height: 150,
                                                       fit: BoxFit.fitWidth,
-                                                    ),
+
+                                                    ): (docblog['category']=="Lifestyle") ? Image.asset(
+
+                                                      'assets/images/lifestyleBack.png',
+                                                      width:
+                                                      MediaQuery.of(context)
+                                                          .size
+                                                          .width,
+                                                      height: 150,
+                                                      fit: BoxFit.fitWidth,
+
+                                                    ):
+                                                    (docblog['category']=="Sports") ? Image.asset(
+
+                                                      'assets/images/sportsBack.png',
+                                                      width:
+                                                      MediaQuery.of(context)
+                                                          .size
+                                                          .width,
+                                                      height: 150,
+                                                      fit: BoxFit.fitWidth,
+
+                                                    ):(docblog['category']=="Health") ? Image.asset(
+
+                                                      'assets/images/healthBack.png',
+                                                      width:
+                                                      MediaQuery.of(context)
+                                                          .size
+                                                          .width,
+                                                      height: 150,
+                                                      fit: BoxFit.fitWidth,
+
+                                                    ):Container(),
                                                   ),
                                                   Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(
-                                                                12, 8, 12, 0),
+                                                    EdgeInsetsDirectional
+                                                        .fromSTEB(
+                                                        12, 8, 12, 0),
                                                     child: Row(
                                                       mainAxisSize:
-                                                          MainAxisSize.max,
+                                                      MainAxisSize.max,
                                                       children: [
-                                                        Container(
-                                                          width: 50,
-                                                          height: 50,
-                                                          clipBehavior:
-                                                              Clip.antiAlias,
-                                                          decoration:
-                                                              BoxDecoration(
-                                                            shape:
-                                                                BoxShape.circle,
-                                                          ),
-                                                          child: Image.asset(
-                                                            'assets/images/user.png',
-                                                          ),
-                                                        ),
                                                         Text(
                                                           docblog['title'],
+                                                            style: TextStyle(
+                                                                fontSize: 16.0,
+                                                                fontWeight: FontWeight.bold)
                                                         )
                                                       ],
                                                     ),
                                                   ),
                                                   Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(
-                                                                12, 4, 12, 0),
+                                                    EdgeInsetsDirectional
+                                                        .fromSTEB(
+                                                        12, 4, 12, 0),
                                                     child: Row(
                                                       mainAxisSize:
-                                                          MainAxisSize.max,
+                                                      MainAxisSize.max,
                                                       children: [
                                                         Expanded(
                                                           child: Padding(
                                                             padding:
-                                                                EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        0,
-                                                                        0,
-                                                                        0,
-                                                                        8),
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                0,
+                                                                0,
+                                                                0,
+                                                                8),
                                                             child: Text(docblog[
-                                                                'description']),
+                                                            'description'],
+                                                                style: TextStyle(
+                                                                    fontSize: 14.0,)),
                                                           ),
                                                         )
                                                       ],
@@ -188,31 +212,83 @@ class _BlogDashboardWidgetState extends State<BlogDashboardWidget> {
                                                   ),
                                                   Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(
-                                                                16, 0, 16, 4),
+                                                    EdgeInsetsDirectional
+                                                        .fromSTEB(
+                                                        16, 0, 16, 4),
                                                     child: Row(
                                                       mainAxisSize:
-                                                          MainAxisSize.max,
+                                                      MainAxisSize.max,
                                                       mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .spaceBetween,
+                                                      MainAxisAlignment
+                                                          .spaceBetween,
                                                       children: [
+                                                        Container(
+                                                          width: 30,
+                                                          height: 30,
+                                                          clipBehavior:
+                                                          Clip.antiAlias,
+                                                          decoration:
+                                                          BoxDecoration(
+                                                              shape:
+                                                              BoxShape.circle,
+                                                              border: Border.all(color: Colors.black12)
+                                                          ),
+                                                          child: (docblog['category']=="Fashion") ? Image.asset(
+
+                                                            'assets/images/fashion.png',
+                                                            width:
+                                                            MediaQuery.of(context)
+                                                                .size
+                                                                .width,
+                                                            fit: BoxFit.fitWidth,
+
+                                                          ): (docblog['category']=="Lifestyle") ? Image.asset(
+
+                                                            'assets/images/lifestyle.png',
+                                                            width:
+                                                            MediaQuery.of(context)
+                                                                .size
+                                                                .width,
+                                                            fit: BoxFit.fitWidth,
+
+                                                          ):
+                                                          (docblog['category']=="Sports") ? Image.asset(
+
+                                                            'assets/images/sport.png',
+                                                            width:
+                                                            MediaQuery.of(context)
+                                                                .size
+                                                                .width,
+                                                            fit: BoxFit.fitWidth,
+
+                                                          ):(docblog['category']=="Health") ? Image.asset(
+
+                                                            'assets/images/health.png',
+                                                            width:
+                                                            MediaQuery.of(context)
+                                                                .size
+                                                                .width,
+                                                            fit: BoxFit.fitWidth,
+
+                                                          ):Container(),
+                                                        ),
                                                         Row(
                                                           mainAxisSize:
-                                                              MainAxisSize.max,
+                                                          MainAxisSize.max,
                                                           children: [
                                                             Padding(
                                                               padding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          12,
-                                                                          0,
-                                                                          0,
-                                                                          0),
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                  12,
+                                                                  0,
+                                                                  0,
+                                                                  0),
                                                               child: Text(
                                                                 docblog[
-                                                                    'category'],
+                                                                'category'],
+                                      style: TextStyle(
+                                      fontSize: 12.0,),
                                                               ),
                                                             )
                                                           ],
@@ -240,10 +316,10 @@ class _BlogDashboardWidgetState extends State<BlogDashboardWidget> {
                             children: [
                               Padding(
                                 padding:
-                                    EdgeInsetsDirectional.fromSTEB(0, 6, 0, 6),
+                                EdgeInsetsDirectional.fromSTEB(0, 6, 0, 6),
                                 child: Container(
                                   width:
-                                      MediaQuery.of(context).size.width * 0.96,
+                                  MediaQuery.of(context).size.width * 0.96,
                                   decoration: BoxDecoration(
                                     color: Colors.white,
                                     boxShadow: [
@@ -263,8 +339,8 @@ class _BlogDashboardWidgetState extends State<BlogDashboardWidget> {
                                       children: [
                                         Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  12, 8, 12, 0),
+                                          EdgeInsetsDirectional.fromSTEB(
+                                              12, 8, 12, 0),
                                           child: Row(
                                             mainAxisSize: MainAxisSize.max,
                                             children: [
@@ -273,7 +349,7 @@ class _BlogDashboardWidgetState extends State<BlogDashboardWidget> {
                                                     width: 50,
                                                     height: 50,
                                                     clipBehavior:
-                                                        Clip.antiAlias,
+                                                    Clip.antiAlias,
                                                     decoration: BoxDecoration(
                                                       shape: BoxShape.circle,
                                                     ),
@@ -294,6 +370,9 @@ class _BlogDashboardWidgetState extends State<BlogDashboardWidget> {
                                                     .fromSTEB(12, 0, 0, 0),
                                                 child: Text(
                                                   'Health',
+                                                    style: TextStyle(
+                                                        fontSize: 20.0,
+                                                        fontWeight: FontWeight.bold)
                                                 ),
                                               ),
                                             ],
@@ -306,10 +385,10 @@ class _BlogDashboardWidgetState extends State<BlogDashboardWidget> {
                               ),
                               Padding(
                                 padding:
-                                    EdgeInsetsDirectional.fromSTEB(0, 6, 0, 6),
+                                EdgeInsetsDirectional.fromSTEB(0, 6, 0, 6),
                                 child: Container(
                                   width:
-                                      MediaQuery.of(context).size.width * 0.96,
+                                  MediaQuery.of(context).size.width * 0.96,
                                   decoration: BoxDecoration(
                                     color: Colors.white,
                                     boxShadow: [
@@ -329,8 +408,8 @@ class _BlogDashboardWidgetState extends State<BlogDashboardWidget> {
                                       children: [
                                         Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  12, 8, 12, 0),
+                                          EdgeInsetsDirectional.fromSTEB(
+                                              12, 8, 12, 0),
                                           child: Row(
                                             mainAxisSize: MainAxisSize.max,
                                             children: [
@@ -339,7 +418,7 @@ class _BlogDashboardWidgetState extends State<BlogDashboardWidget> {
                                                     width: 50,
                                                     height: 50,
                                                     clipBehavior:
-                                                        Clip.antiAlias,
+                                                    Clip.antiAlias,
                                                     decoration: BoxDecoration(
                                                       shape: BoxShape.circle,
                                                     ),
@@ -359,6 +438,9 @@ class _BlogDashboardWidgetState extends State<BlogDashboardWidget> {
                                                     .fromSTEB(12, 0, 0, 0),
                                                 child: Text(
                                                   'Lifestyle',
+                                                    style: TextStyle(
+                                                        fontSize: 20.0,
+                                                        fontWeight: FontWeight.bold)
                                                 ),
                                               ),
                                             ],
@@ -371,10 +453,10 @@ class _BlogDashboardWidgetState extends State<BlogDashboardWidget> {
                               ),
                               Padding(
                                 padding:
-                                    EdgeInsetsDirectional.fromSTEB(0, 6, 0, 6),
+                                EdgeInsetsDirectional.fromSTEB(0, 6, 0, 6),
                                 child: Container(
                                   width:
-                                      MediaQuery.of(context).size.width * 0.96,
+                                  MediaQuery.of(context).size.width * 0.96,
                                   decoration: BoxDecoration(
                                     color: Colors.white,
                                     boxShadow: [
@@ -394,8 +476,8 @@ class _BlogDashboardWidgetState extends State<BlogDashboardWidget> {
                                       children: [
                                         Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  12, 8, 12, 0),
+                                          EdgeInsetsDirectional.fromSTEB(
+                                              12, 8, 12, 0),
                                           child: Row(
                                             mainAxisSize: MainAxisSize.max,
                                             children: [
@@ -404,7 +486,7 @@ class _BlogDashboardWidgetState extends State<BlogDashboardWidget> {
                                                     width: 50,
                                                     height: 50,
                                                     clipBehavior:
-                                                        Clip.antiAlias,
+                                                    Clip.antiAlias,
                                                     decoration: BoxDecoration(
                                                       shape: BoxShape.circle,
                                                     ),
@@ -425,6 +507,9 @@ class _BlogDashboardWidgetState extends State<BlogDashboardWidget> {
                                                     .fromSTEB(12, 0, 0, 0),
                                                 child: Text(
                                                   'Sports',
+                                                    style: TextStyle(
+                                                        fontSize: 20.0,
+                                                        fontWeight: FontWeight.bold)
                                                 ),
                                               ),
                                             ],
@@ -437,10 +522,10 @@ class _BlogDashboardWidgetState extends State<BlogDashboardWidget> {
                               ),
                               Padding(
                                 padding:
-                                    EdgeInsetsDirectional.fromSTEB(0, 6, 0, 6),
+                                EdgeInsetsDirectional.fromSTEB(0, 6, 0, 6),
                                 child: Container(
                                   width:
-                                      MediaQuery.of(context).size.width * 0.96,
+                                  MediaQuery.of(context).size.width * 0.96,
                                   decoration: BoxDecoration(
                                     color: Colors.white,
                                     boxShadow: [
@@ -460,8 +545,8 @@ class _BlogDashboardWidgetState extends State<BlogDashboardWidget> {
                                       children: [
                                         Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  12, 8, 12, 0),
+                                          EdgeInsetsDirectional.fromSTEB(
+                                              12, 8, 12, 0),
                                           child: Row(
                                             mainAxisSize: MainAxisSize.max,
                                             children: [
@@ -470,7 +555,7 @@ class _BlogDashboardWidgetState extends State<BlogDashboardWidget> {
                                                     width: 50,
                                                     height: 50,
                                                     clipBehavior:
-                                                        Clip.antiAlias,
+                                                    Clip.antiAlias,
                                                     decoration: BoxDecoration(
                                                       shape: BoxShape.circle,
                                                     ),
@@ -491,6 +576,9 @@ class _BlogDashboardWidgetState extends State<BlogDashboardWidget> {
                                                     .fromSTEB(12, 0, 0, 0),
                                                 child: Text(
                                                   'Fashion',
+                                                    style: TextStyle(
+                                                        fontSize: 20.0,
+                                                        fontWeight: FontWeight.bold)
                                                 ),
                                               ),
                                             ],
@@ -517,7 +605,7 @@ class _BlogDashboardWidgetState extends State<BlogDashboardWidget> {
         child: Container(
           decoration: BoxDecoration(
             gradient:
-                LinearGradient(colors: [Color(0xFFBA68C8), Color(0xFF8E24AA)]),
+            LinearGradient(colors: [Color(0xFFBA68C8), Color(0xFF8E24AA)]),
           ),
           child: Padding(
             padding: EdgeInsets.only(left: 20, right: 20, top: 5, bottom: 5),

@@ -64,6 +64,9 @@ class SportsDetailScreen extends StatelessWidget {
                                       children: [
                                         Text(
                                           data['title'],
+                                            style: TextStyle(
+                                                fontSize: 16.0,
+                                                fontWeight: FontWeight.bold)
                                         )
                                       ],
                                     ),
@@ -87,7 +90,9 @@ class SportsDetailScreen extends StatelessWidget {
                                                 0,
                                                 8),
                                             child: Text(data[
-                                            'description']),
+                                            'description'],
+                                                style: TextStyle(
+                                                    fontSize: 14)),
                                           ),
                                         )
                                       ],
@@ -138,7 +143,9 @@ class SportsDetailScreen extends StatelessWidget {
                                                   0),
                                               child: Text(
                                                 data[
-                                                'category'],
+                                                'category']
+                                                , style: TextStyle(
+                                                  fontSize: 12)
                                               ),
                                             )
                                           ],
